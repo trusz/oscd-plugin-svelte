@@ -1,9 +1,9 @@
 name: "Check Version for Change"
 on:
   workflow_call:
-    secrets:
-      PAT_REPO_OSCD_PLUGINS:
-        required: true
+  push:
+    branches:
+      - main
 
 jobs:
   build:
