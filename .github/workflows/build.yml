@@ -1,4 +1,4 @@
-name: "Check Version for Change"
+name: "Build & Deploy"
 on:
   workflow_call:
   push:
