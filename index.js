@@ -3,14 +3,14 @@ var V = (t, e, n) => e in t ? H(t, e, { enumerable: !0, configurable: !0, writab
 var _ = (t, e, n) => V(t, typeof e != "symbol" ? e + "" : e, n);
 function g() {
 }
-function B(t) {
+function R(t) {
   return t();
 }
-function O() {
+function j() {
   return /* @__PURE__ */ Object.create(null);
 }
 function b(t) {
-  t.forEach(B);
+  t.forEach(R);
 }
 function U(t) {
   return typeof t == "function";
@@ -33,7 +33,7 @@ function x(t) {
 function z(t) {
   return document.createTextNode(t);
 }
-function j() {
+function O() {
   return z(" ");
 }
 function $(t, e, n) {
@@ -48,7 +48,7 @@ function m(t) {
 }
 const d = [], A = [];
 let h = [];
-const L = [], F = /* @__PURE__ */ Promise.resolve();
+const B = [], F = /* @__PURE__ */ Promise.resolve();
 let k = !1;
 function G() {
   k || (k = !0, F.then(I));
@@ -78,8 +78,8 @@ function I() {
     }
     h.length = 0;
   } while (d.length);
-  for (; L.length; )
-    L.pop()();
+  for (; B.length; )
+    B.pop()();
   k = !1, w.clear(), m(t);
 }
 function J(t) {
@@ -100,7 +100,7 @@ function X(t, e) {
 function Y(t, e, n) {
   const { fragment: i, after_update: r } = t.$$;
   i && i.m(e, n), C(() => {
-    const o = t.$$.on_mount.map(B).filter(U);
+    const o = t.$$.on_mount.map(R).filter(U);
     t.$$.on_destroy ? t.$$.on_destroy.push(...o) : b(o), t.$$.on_mount = [];
   }), r.forEach(C);
 }
@@ -121,7 +121,7 @@ function et(t, e, n, i, r, o, s = null, l = [-1]) {
     props: o,
     update: g,
     not_equal: r,
-    bound: O(),
+    bound: j(),
     // lifecycle
     on_mount: [],
     on_destroy: [],
@@ -130,7 +130,7 @@ function et(t, e, n, i, r, o, s = null, l = [-1]) {
     after_update: [],
     context: new Map(e.context || (y ? y.$$.context : [])),
     // everything else
-    callbacks: O(),
+    callbacks: j(),
     dirty: l,
     skip_bound: !1,
     root: e.target || y.$$.root
@@ -199,7 +199,7 @@ class nt {
 const it = "4";
 typeof window < "u" && (window.__svelte || (window.__svelte = { v: /* @__PURE__ */ new Set() })).v.add(it);
 const M = "new-oscd-plugin", T = "0.0.1";
-function R(t) {
+function L(t) {
   let e;
   return {
     c() {
@@ -216,18 +216,18 @@ function R(t) {
 function ot(t) {
   let e, n, i, r, o = (
     /*doc*/
-    t[0] && R()
+    t[0] && L()
   );
   return {
     c() {
-      o && o.c(), e = j(), n = x("input"), i = j(), r = x("input"), $(n, "type", "hidden"), $(n, "name", "package-name"), n.value = M, $(r, "type", "hidden"), $(r, "name", "package-version"), r.value = T;
+      o && o.c(), e = O(), n = x("input"), i = O(), r = x("input"), $(n, "type", "hidden"), $(n, "name", "package-name"), n.value = M, $(r, "type", "hidden"), $(r, "name", "package-version"), r.value = T;
     },
     m(s, l) {
       o && o.m(s, l), p(s, e, l), p(s, n, l), p(s, i, l), p(s, r, l);
     },
     p(s, [l]) {
       /*doc*/
-      s[0] ? o || (o = R(), o.c(), o.m(e.parentNode, e)) : o && (o.d(1), o = null);
+      s[0] ? o || (o = L(), o.c(), o.m(e.parentNode, e)) : o && (o.d(1), o = null);
     },
     i: g,
     o: g,
@@ -278,7 +278,7 @@ function st() {
 }
 function lt() {
   const t = new URL(import.meta.url), e = t.origin, n = t.pathname.split("/").slice(0, -1).filter(Boolean).join("/");
-  return `${e}/${n}style.css`;
+  return [e, n, "style.css"].filter(Boolean).join("/");
 }
 export {
   ft as default
