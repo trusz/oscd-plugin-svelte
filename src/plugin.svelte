@@ -2,9 +2,14 @@
 	import * as pckg from "../package.json";
 	import "./app.css"
 	
-	// Inputs
-	export let doc: XMLDocument | undefined;
-	export let editCount: number
+	
+	interface Props {
+		// Inputs
+		doc: XMLDocument | undefined;
+		editCount: number;
+	}
+
+	let { doc, editCount }: Props = $props();
 </script>
 
 {#if doc}
