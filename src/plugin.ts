@@ -1,6 +1,6 @@
 import Plugin from './plugin.svelte'
 import * as pkg from "../package.json";
-
+import { mount } from "svelte";
 
 export default class NewOSCDPlugin extends HTMLElement {
 
@@ -8,13 +8,13 @@ export default class NewOSCDPlugin extends HTMLElement {
 	
 	connectedCallback() {
 		this.attachShadow({ mode: "open" });
-		this.plugin = new Plugin({
-			target: this.shadowRoot!,
-			props: {
-				doc: this._doc,
-				editCount: -1
-			}
-		});
+		this.plugin = mount(Plugin, {
+        			target: this.shadowRoot!,
+        			props: {
+        				doc: this._doc,
+        				editCount: -1
+        			}
+        		});
 
 		const linkElement = createStyleLinkElement()
 		this.shadowRoot?.appendChild(linkElement)
