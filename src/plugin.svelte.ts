@@ -3,38 +3,35 @@ import * as pkg from "../package.json";
 import { mount } from "svelte";
 
 export default class NewOSCDPlugin extends HTMLElement {
+	
+	private props = $state<{
+		doc: XMLDocument | undefined,
+		editCount: number,
+	}>({
+		doc: undefined,
+		editCount: -1,
+	});
 
-	private plugin?: Plugin
 	
 	connectedCallback() {
 		this.attachShadow({ mode: "open" });
-		this.plugin = mount(Plugin, {
-        			target: this.shadowRoot!,
-        			props: {
-        				doc: this._doc,
-        				editCount: -1
-        			}
-        		});
-
+		mount(
+			Plugin, 
+			{ 
+				target: this.shadowRoot!,
+				props: this.props,
+			}
+		)
 		const linkElement = createStyleLinkElement()
 		this.shadowRoot?.appendChild(linkElement)
 	}
 
-	private _doc?: XMLDocument
 	public set doc(newDoc: XMLDocument){
-		this._doc = newDoc
-		if(!this.plugin) {
-			return
-		}
-
-		this.plugin.$set({doc: newDoc})
+		this.props.doc = newDoc
 	}
 
 	public set editCount(newCount: number) {
-		if (!this.plugin) {
-			return
-		}
-		this.plugin.$set({ editCount: newCount })
+		this.props.editCount = newCount
 	}
 
 }
